@@ -6,18 +6,20 @@ We're building a site that will allow a user to add games to a favorites list an
 
 We are given three models: `User`, `Game`, and `Category`
 
-**For our purposes, a `User` can favorite many `Game`s and a `Game` can be favorited by many `User`s. A `User` can write reviews for many `Game`s and a `Game` can receive reviews from many `User`s.  A `Game` can have many `Category`(ies) and a `Category` can have many `Game`s.**
+## Core Deliverables
+
+**For the purposes of the core deliverables, a `User` can write reviews for many `Game`s and a `Game` can receive reviews from many `User`s.**
 
 `User` - `Game` is a many to many relationship.
 
-`Category` -  `Game` is a many to many relationship.
+`Category` -  `Game` is a one to many relationship.
 
 You will need more relationships. What are they?
 
 **Note**: You should draw your domain on paper or on a whiteboard _before you
 start coding_. Remember to identify a single source of truth for your data.
 
-**Note**: This mock code challenge is _more_ challenging than the actual code challenge.
+**Note**: This mock code challenge is _more_ challenging than the actual code challenge, especially with the advanced deliverables.
 
 
 ## Topics
@@ -115,7 +117,7 @@ migrations. Let's start with a migration for the `review` table.
 After creating the `reviews` table using a migration, use the `seeds.rb` file to
 create instances of your `Review` class so you can test your code.
 
-What other table or tables will you need to create so that users can favorite many games and games can have multiple categories? Review the relationships described near the top of this README and your Entity Relationship Diagram.
+
 
 **Once you've set up your tables**, work on building out the following
 deliverables.
@@ -136,22 +138,15 @@ appropriate (i.e. `has_many`, `has_many through`, and `belongs_to`).
 
 - `User#reviews`
   - returns a collection of all the reviews for the User
-- `User#reviewed_games`
+- `User#games`
   - returns a collection of all the games reviewed by the User
-- `User#favorites`
-  - returns a collection of all the games favorited by the User
 
 #### Game
 
 - `Game#users`
-  - returns a collection of all users who have favorited the Game 
+  - returns a collection of all users who have reviewed the Game 
 - `Game#reviews`
   - returns a collection of all the reviews of that Game 
-- `Game#reviewers`
-  - returns a collection of all the users who have reviewed that Game
-- `Game#categories`
-    - returns a collection of the game's categories
-
 
 #### Category
 
@@ -177,32 +172,58 @@ games reviewed by the first user in the database based on your seed data; and
   - takes a `game` (an instance of the `Game` class), some `content` (string), and a `rating` integer
     as arguments, and creates a new `Review` instance associated with this
     User and the given Game
-- `User#add_favorite(game)`
-  - takes a `game` (an instance of the `Game` class), 
-    as an argument, and creates the proper association between this
-    User and the given Game
 - `User.most_reviews`
   - returns the `User` instance with the most reviews associated with it
 
 #### Game
 
-- `Game#add_category(category)`
-  - accepts a `category` (instance) and associates it with the Game it's called on
 - `Game#average_rating`
   - returns the average ratings from a game's reviews as a float, or the string 'No ratings yet'
 - `Game.find_by_platform(platform)`
   - accepts a platform string and returns a collection of `Game` instances that are for that platform
-- `Game.most_popular`
-  - returns the game instance that has been favorited by the most users
 
 #### Category
 
 - `Category#platforms`
     - returns a collection (strings) of the platforms available for a given category without duplicate strings
-- `Category.most_popular`
-    - returns a category instance based on the current most-popular game
 - `Category.highest_rated`
     - returns a category instance connected to the game with the highest current rating
 
+## Advanced deliverables
+Only attempt these when you have completed and tested the deliverables above.  Be sure you have made a commit of the working code before starting on advanced deliverables.
 
+We're going to expand on our model associations now.
 
+**A `User` can favorite many `Game`s and a `Game` can be favorited by many `User`s. A `Game` can have many `Category`(ies) and a `Category` can have many `Game`s.**
+
+What other table or tables will you need to create so that users can favorite many games and games can have multiple categories? Review the relationships just described and update your Entity Relationship Diagram (ERD). Do you need to update anything in the existing code to make this work?
+
+### Object Association Methods
+
+#### User
+- `User#favorites`
+  - returns a collection of all the games favorited by the User
+
+#### Game
+- `Game#favoriters`
+  - returns a collection of all the users who have favorited that Game
+- `Game#categories`
+    - returns a collection of the game's categories
+
+### Aggregate and Association Methods
+
+#### User
+- `User#add_favorite(game)`
+  - takes a `game` (an instance of the `Game` class), 
+    as an argument, and creates the proper association between this
+    User and the given Game
+    
+#### Game
+- `Game#add_category(category)`
+  - accepts a `category` (instance) and associates it with the Game it's called on
+- `Game.most_popular`
+  - returns the game instance that has been favorited by the most users
+
+#### Category
+- `Category.most_popular`
+    - returns a category instance based on the current most-popular game
