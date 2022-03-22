@@ -168,11 +168,11 @@ games reviewed by the first user in the database based on your seed data; and
 
 #### User
 
-- [] `User#write_review(game, content, rating)`
+- [x] `User#write_review(game, content, rating)`
   - takes a `game` (an instance of the `Game` class), some `content` (string), and a `rating` integer
     as arguments, and creates a new `Review` instance associated with this
     User and the given Game
-- [] `User.most_reviews`
+- [x] `User.most_reviews`
   - returns the `User` instance with the most reviews associated with it
 
 #### Game
