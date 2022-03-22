@@ -184,9 +184,9 @@ games reviewed by the first user in the database based on your seed data; and
 
 #### Category
 
-- [] `Category#platforms`
+- [x] `Category#platforms`
     - returns a collection (strings) of the platforms available for a given category without duplicate strings
-- [] `Category.highest_rated`
+- [x] `Category.highest_rated`
     - returns a category instance connected to the game with the highest current rating
     - (for Advanced Deliverables, we'll have to allow this method to return an array of categories)
 
