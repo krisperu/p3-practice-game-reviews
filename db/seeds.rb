@@ -23,4 +23,9 @@ end
 
 # TODO: Create seeds for the models/migrations you have added
 
+puts "Creating reviews..."
+5.times {
+    Review.create(user: User.all.sample, game_id: Game.ids.sample, content: Faker::Lorem.sentence, rating: Faker::Number.within(range: 1..5))
+}
+
 puts "Database seeded successfully!"

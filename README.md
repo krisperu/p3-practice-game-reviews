@@ -129,28 +129,28 @@ appropriate (i.e. `has_many`, `has_many through`, and `belongs_to`).
 
 #### Review
 
-- `Review#user`
+- [x] `Review#user`
   - returns the `User` instance for this Review
-- `Review#game`
+- [x] `Review#game`
   - returns the `Game` instance for this Review
 
 #### User
 
-- `User#reviews`
+- [x] `User#reviews`
   - returns a collection of all the reviews for the User
-- `User#games`
+- [x] `User#games`
   - returns a collection of all the games reviewed by the User
 
 #### Game
 
-- `Game#users`
+- [x] `Game#users`
   - returns a collection of all users who have reviewed the Game 
-- `Game#reviews`
+- [x] `Game#reviews`
   - returns a collection of all the reviews of that Game 
 
 #### Category
 
-- `Category#games`
+- [x] `Category#games`
     - returns a collection of all the games that belong to a given category
 
 Use `rake console` and check that these methods work before proceeding. For
@@ -162,31 +162,31 @@ games reviewed by the first user in the database based on your seed data; and
 
 #### Review
 
-- `Review#print_details`
+- [x] `Review#print_details`
   - should return a string formatted as follows:
     `{insert user's name} gives {insert games's item_name} {insert review's rating} stars: {insert review's content}`
 
 #### User
 
-- `User#write_review(game, content, rating)`
+- [] `User#write_review(game, content, rating)`
   - takes a `game` (an instance of the `Game` class), some `content` (string), and a `rating` integer
     as arguments, and creates a new `Review` instance associated with this
     User and the given Game
-- `User.most_reviews`
+- [] `User.most_reviews`
   - returns the `User` instance with the most reviews associated with it
 
 #### Game
 
-- `Game#average_rating`
+- [] `Game#average_rating`
   - returns the average ratings from a game's reviews as a float, or the string 'No ratings yet'
-- `Game.find_by_platform(platform)`
+- [] `Game.find_by_platform(platform)`
   - accepts a platform string and returns a collection of `Game` instances that are for that platform
 
 #### Category
 
-- `Category#platforms`
+- [] `Category#platforms`
     - returns a collection (strings) of the platforms available for a given category without duplicate strings
-- `Category.highest_rated`
+- [] `Category.highest_rated`
     - returns a category instance connected to the game with the highest current rating
     - (for Advanced Deliverables, we'll have to allow this method to return an array of categories)
 
