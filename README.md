@@ -177,9 +177,9 @@ games reviewed by the first user in the database based on your seed data; and
 
 #### Game
 
-- [] `Game#average_rating`
+- [x] `Game#average_rating`
   - returns the average ratings from a game's reviews as a float, or the string 'No ratings yet'
-- [] `Game.find_by_platform(platform)`
+- [x] `Game.find_by_platform(platform)`
   - accepts a platform string and returns a collection of `Game` instances that are for that platform
 
 #### Category

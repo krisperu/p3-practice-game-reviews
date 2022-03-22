@@ -1,11 +1,4 @@
 class User < ActiveRecord::Base
-    
-    has_many :reviews
-    has_many :games, through: :reviews
-
-    def write_review(game, content, rating)
-        self.reviews.create(game: game, content: content, rating: rating)
-    end
 
     def self.most_reviews
         # get an array of all users
@@ -14,4 +7,11 @@ class User < ActiveRecord::Base
         self.all.max_by { |user| user.reviews.length }
     end
     
+    has_many :reviews
+    has_many :games, through: :reviews
+
+    def write_review(game, content, rating)
+        self.reviews.create(game: game, content: content, rating: rating)
+    end
+
 end
