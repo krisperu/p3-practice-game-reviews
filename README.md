@@ -188,6 +188,7 @@ games reviewed by the first user in the database based on your seed data; and
     - returns a collection (strings) of the platforms available for a given category without duplicate strings
 - `Category.highest_rated`
     - returns a category instance connected to the game with the highest current rating
+    - (for Advanced Deliverables, we'll have to allow this method to return an array of categories)
 
 ## Advanced deliverables
 Only attempt these when you have completed and tested the deliverables above.  Be sure you have made a commit of the working code before starting on advanced deliverables.
@@ -203,10 +204,12 @@ What other table or tables will you need to create so that users can favorite ma
 #### User
 - `User#favorites`
   - returns a collection of all the games favorited by the User
+  - (at this point, you may run into an issue, you haven't encountered up until now: how in the world can you define more than one `has_many, through:` associations that join the same two models through different join models? You'll want to look into [association aliases](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/active-record-associations))
 
 #### Game
 - `Game#favoriters`
   - returns a collection of all the users who have favorited that Game
+  - (see the above on how to alias your associations)
 - `Game#categories`
     - returns a collection of the game's categories
 
