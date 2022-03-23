@@ -228,5 +228,5 @@ What other table or tables will you need to create so that users can favorite ma
   - returns the game instance that has been favorited by the most users
 
 #### Category
-- [] `Category.most_popular`
-    - returns a category instance based on the current most-popular game
+- [x] `Category.most_popular`
+    - returns an array of catgories based on the current most-popular game
