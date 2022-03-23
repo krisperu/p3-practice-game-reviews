@@ -2,7 +2,7 @@
 
 For this assignment, we'll be working with a video games domain.
 
-We're building a site that will allow a user to add games to a favorites list and write reviews about video games.
+We're building a site that will allow a user to write reviews about video games (and to add games to a favorites list (ADVANCED)).
 
 We are given three models: `User`, `Game`, and `Category`
 
@@ -154,7 +154,7 @@ appropriate (i.e. `has_many`, `has_many through`, and `belongs_to`).
     - returns a collection of all the games that belong to a given category
 
 Use `rake console` and check that these methods work before proceeding. For
-example, you should be able to call `User.first.reviewed_games` and see a list of the
+example, you should be able to call `User.first.games` and see a list of the
 games reviewed by the first user in the database based on your seed data; and
 `Review.first.user` should return the user for the first review in the database.
 
@@ -164,7 +164,7 @@ games reviewed by the first user in the database based on your seed data; and
 
 - `Review#print_details`
   - should return a string formatted as follows:
-    `{insert user's name} gives {insert games's item_name} {insert review's rating} stars: {insert review's content}`
+    `{insert user's name} gives {insert games's name} {insert review's rating} stars: {insert review's content}`
 
 #### User
 
@@ -202,9 +202,9 @@ What other table or tables will you need to create so that users can favorite ma
 ### Object Association Methods
 
 #### User
-- `User#favorites`
+- `User#favorite_games`
   - returns a collection of all the games favorited by the User
-  - (at this point, you may run into an issue, you haven't encountered up until now: how in the world can you define more than one `has_many, through:` associations that join the same two models through different join models? You'll want to look into [association aliases](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/active-record-associations))
+  - (at this point, you may run into an issue you haven't encountered up until now: how in the world can you define more than one `has_many, through:` association that join the same two models through different join models? You'll want to look into [association aliases](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/active-record-associations) and focus on the syntax around using a custom name for a `has_many through:` association)
 
 #### Game
 - `Game#favoriters`
@@ -219,14 +219,14 @@ What other table or tables will you need to create so that users can favorite ma
 - `User#add_favorite(game)`
   - takes a `game` (an instance of the `Game` class), 
     as an argument, and creates the proper association between this
-    User and the given Game
+    user instance and the given `game`
     
 #### Game
 - `Game#add_category(category)`
-  - accepts a `category` (instance) and associates it with the Game it's called on
+  - accepts a `category` (instance) and associates it with the game instance it's called on
 - `Game.most_popular`
   - returns the game instance that has been favorited by the most users
 
 #### Category
 - `Category.most_popular`
-    - returns a category instance based on the current most-popular game
+    - returns an array of categories based on the current most-popular game
