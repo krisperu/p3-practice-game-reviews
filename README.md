@@ -202,31 +202,31 @@ What other table or tables will you need to create so that users can favorite ma
 ### Object Association Methods
 
 #### User
-- `User#favorites`
+- [x] `User#favorites`
   - returns a collection of all the games favorited by the User
   - (at this point, you may run into an issue, you haven't encountered up until now: how in the world can you define more than one `has_many, through:` associations that join the same two models through different join models? You'll want to look into [association aliases](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/active-record-associations))
 
 #### Game
-- `Game#favoriters`
+- [x]`Game#favoriters`
   - returns a collection of all the users who have favorited that Game
   - (see the above on how to alias your associations)
-- `Game#categories`
+- [x] `Game#categories`
     - returns a collection of the game's categories
 
 ### Aggregate and Association Methods
 
 #### User
-- `User#add_favorite(game)`
+- [x] `User#add_favorite(game)`
   - takes a `game` (an instance of the `Game` class), 
     as an argument, and creates the proper association between this
     User and the given Game
     
 #### Game
-- `Game#add_category(category)`
+- [] `Game#add_category(category)`
   - accepts a `category` (instance) and associates it with the Game it's called on
-- `Game.most_popular`
+- [] `Game.most_popular`
   - returns the game instance that has been favorited by the most users
 
 #### Category
-- `Category.most_popular`
+- [] `Category.most_popular`
     - returns a category instance based on the current most-popular game

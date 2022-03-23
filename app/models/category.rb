@@ -5,7 +5,8 @@ class Category < ActiveRecord::Base
         Review.all.max_by(&:rating).game.category
     end
 
-    has_many :games
+    has_many :game_categories
+    has_many :games, through: :game_categories
 
     def platforms
         self.games.pluck(:platform).uniq

@@ -5,9 +5,13 @@ class Game < ActiveRecord::Base
         self.all.where(platform: platform)
     end
     
-    belongs_to :category
+    
     has_many :reviews
     has_many :users, through: :reviews
+    has_many :game_categories
+    has_many :categories, through: :game_categories
+    has_many :favorites
+    has_many :favoriters, through: :favorites, source: :user
 
 
     def average_rating
