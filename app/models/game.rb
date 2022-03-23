@@ -4,6 +4,10 @@ class Game < ActiveRecord::Base
         # self.all.find_by(platform: platform) # won't work b/c only returns first instance found
         self.all.where(platform: platform)
     end
+
+    def self.most_popular
+        self.all.max_by{|game| game.favorites.length }
+    end
     
     
     has_many :reviews
@@ -18,6 +22,10 @@ class Game < ActiveRecord::Base
         # get [] of game's reviews or nil
         # use ternary to return either average of review ratings or "no ratings"
         self.reviews.length > 0 ? self.reviews.average(:rating).to_f : "No ratings yet."
+    end
+
+    def add_category(category)
+        self.categories << category
     end
 
 

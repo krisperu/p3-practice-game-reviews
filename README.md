@@ -222,9 +222,9 @@ What other table or tables will you need to create so that users can favorite ma
     User and the given Game
     
 #### Game
-- [] `Game#add_category(category)`
+- [x] `Game#add_category(category)`
   - accepts a `category` (instance) and associates it with the Game it's called on
-- [] `Game.most_popular`
+- [x] `Game.most_popular`
   - returns the game instance that has been favorited by the most users
 
 #### Category
