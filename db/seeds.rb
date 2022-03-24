@@ -27,7 +27,7 @@ puts "Creating reviews... "
     user_id = User.ids.sample
     game_id = Game.ids.sample
     rating = rand(1..5)
-    Review.create(content: Faker::Lorem.unique.sentence, rating: rating, user_id: rand(1..10), game_id: rand(1..10))
+    Review.create(content: Faker::Lorem.unique.sentence, rating: rating, user_id: user_id, game_id: game_id)
 end
 
 puts "Database seeded successfully!"
