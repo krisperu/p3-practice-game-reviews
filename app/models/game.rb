@@ -4,7 +4,7 @@ class Game < ActiveRecord::Base
     belongs_to :category
     
     def self.find_by_platform(platform)
-        self.all.pluck(:game)
+        self.pluck(:platform)
     end
     
     def average_rating
